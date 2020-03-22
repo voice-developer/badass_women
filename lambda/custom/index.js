@@ -4,17 +4,13 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require('ask-sdk-core');
-// i18n library dependency, we use it below in a localisation interceptor
-const i18n = require('i18next');
-// i18n strings for all supported locales
-const languageStrings = require('./languageStrings');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = handlerInput.t('WELCOME_MSG');
+        const speakOutput = "Welcome to Bad ass women. You can ask for some affirmations or why not try out a fitness workout?";
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
