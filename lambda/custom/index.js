@@ -5,12 +5,24 @@
  * */
 const Alexa = require('ask-sdk-core');
 
+const affirmations = [
+    'A long journey starts with the first step. You have got this keep going!',
+    'A wise man once said something!'
+];
+
+const welcomeMsg = [
+    'Welcome to badass women',
+    'hi from badass women',
+    'howdy from badass women'
+]
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = "Welcome to Bad ass women. You can ask for some affirmations or why not try out a fitness workout?";
+
+        const speakOutput = getRandomPhrase(welcomeMsg);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -135,6 +147,13 @@ const ErrorHandler = {
             .getResponse();
     }
 };
+
+
+function getRandomPhrase(array) {
+    // the argument is an array [] of words or phrases
+    const i = Math.floor(Math.random() * array.length);
+    return (array[i]);
+  };
 
 // This request interceptor will bind a translation function 't' to the handlerInput
 const LocalisationRequestInterceptor = {
