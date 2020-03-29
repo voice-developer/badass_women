@@ -1,9 +1,28 @@
 {
   "deploy_settings": {
     "default": {
-      "skill_id": "",
+      "skill_id": "amzn1.ask.skill.ef8df2e7-6e95-4c7c-b086-771a2a917cde",
       "was_cloned": false,
-      "merge": {}
+      "merge": {},
+      "resources": {
+        "manifest": {
+          "eTag": "a8e2c833cb7555a5373242542f6b6724"
+        },
+        "lambda": [
+          {
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "arn": "arn:aws:lambda:us-east-1:160938417517:function:ask-custom-badass_women-default",
+            "awsRegion": "us-east-1",
+            "codeUri": "lambda/custom",
+            "functionName": "ask-custom-badass_women-default",
+            "handler": "index.handler",
+            "revisionId": "4bbdd3fa-5b90-4d6b-8870-a957b8df535b",
+            "runtime": "nodejs10.x"
+          }
+        ]
+      }
     }
   }
 }

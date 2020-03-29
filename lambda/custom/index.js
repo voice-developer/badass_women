@@ -31,13 +31,13 @@ const LaunchRequestHandler = {
     }
 };
 
-const HelloWorldIntentHandler = {
+const affirmationsIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
     },
     handle(handlerInput) {
-        const speakOutput = handlerInput.t('HELLO_MSG');
+        const speakOutput = getRandomAffirmations(affirmations);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -154,6 +154,11 @@ function getRandomPhrase(array) {
     const i = Math.floor(Math.random() * array.length);
     return (array[i]);
   };
+function getRandomAffirmations(array) {
+// the argument is an array [] of words or phrases
+const i = Math.floor(Math.random() * array.length);
+return (array[i]);
+};
 
 // This request interceptor will bind a translation function 't' to the handlerInput
 const LocalisationRequestInterceptor = {
@@ -174,7 +179,7 @@ const LocalisationRequestInterceptor = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelloWorldIntentHandler,
+        affirmationsIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
